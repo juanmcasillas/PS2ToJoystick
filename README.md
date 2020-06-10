@@ -1,6 +1,45 @@
 # PS2ToJoystick
 PS2 Dualshock 2 PAD to PC Joystick
 
+# Table Of Contents
+
+1. [Project Features](#project-features)
+2. [Part List](#part-list)
+3. [Electronics](#electronics)
+    1. [Wiring](#wiring)
+4. [Software](#software)
+    
+# Project Features
+
+# Part List
+
+# Electronics
+
+## Wiring
+
+
+Female Socket (the opposite to DualShock 2 connector)
+```
+\-------------------------/
+ \ 1 2 3   4 5 6   7 8 9 /
+  \---------------------/
+```
+
+|Dualshock PIN   |color   |function |                      arduino PIN|
+|----------------|--------|---------|--------------------------------:|
+|1               |brown   |DATA     | (with pullup resistor 4.7KOhm) 6|    
+|2               |orange  |DATA     |                                7|    
+|3               |grey    |VIBRATION|                                 |    
+|4               |black   |GROUND   |                              GND|    
+|5               |red     |VCC      |                              VCC|    
+|6               |yellow  |SELECT   |                                8|    
+|7               |blue    |CLOCK    |                                9|    
+|8               |white   |UNKNOWN  |                                 |    
+|9               |green   |ACK    |                                   |    
+
+# Software
+
+
 
 # Resources
 
