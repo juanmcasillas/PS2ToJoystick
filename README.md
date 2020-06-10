@@ -64,6 +64,11 @@ http://www.billporter.info/2010/06/05/playstation-2-controller-arduino-library-v
 https://github.com/madsci1016/Arduino-PS2X/tree/master/PS2X_lib
 https://store.curiousinventor.com/guides/PS2
 
+https://github.com/x360ce/x360ce/releases
+(alpha)https://github.com/x360ce/x360ce/releases/tag/4.10.0.0
+(driver)https://github.com/x360ce/x360ce/releases/download/4.10.0.0/x360ce.zip
+
+
 https://github.com/MHeironimus/ArduinoJoystickLibrary
 https://github.com/madsci1016/Arduino-PS2X
 

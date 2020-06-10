@@ -131,15 +131,9 @@ void setup(){
 }
 
 void loop() {
-  /* You must Read Gamepad to get new values and set vibration values
-     ps2x.read_gamepad(small motor on/off, larger motor strenght from 0-255)
-     if you don't enable the rumble, use ps2x.read_gamepad(); with no values
-     You should call this at least once a second
-   */  
-  if(error == 1) //skip loop if no controller found
+    if(error == 1) //skip loop if no controller found
     return; 
   
-
     ps2x.read_gamepad(); 
     
     if(ps2x.ButtonPressed(PSB_CIRCLE)) Joystick.pressButton(JOY_CIRCLE);
@@ -174,7 +168,7 @@ void loop() {
     if(ps2x.ButtonReleased(PSB_R3)) Joystick.releaseButton(JOY_R3);
 
     if(ps2x.ButtonPressed(PSB_SELECT)) Joystick.pressButton(JOY_SELECT);
-    if(ps2x.ButtonReleased(PSB_SELECT)) Joystick.releaseButton(JOY_SELECT);    
+    if(ps2x.ButtonReleased(PSB_SELECT)) Joystick.releaseButton(JOY_SELECT);
 
     if(ps2x.ButtonPressed(PSB_START)) Joystick.pressButton(JOY_START);
     if(ps2x.ButtonReleased(PSB_START)) Joystick.releaseButton(JOY_START);
