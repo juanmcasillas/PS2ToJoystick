@@ -28,14 +28,15 @@ Female Socket (the opposite to DualShock 2 connector) (looking from FRONT)
 |Dualshock PIN   |color   |function |                      arduino PIN|
 |----------------|--------|---------|--------------------------------:|
 |1               |brown   |DATA     | (with pullup resistor 4.7KOhm) 6|    
-|2               |orange  |DATA     |                                7|    
+|2               |orange  |COMMAND  |                                7|    
 |3               |grey    |VIBRATION|                                 |    
 |4               |black   |GROUND   |                              GND|    
 |5               |red     |VCC      |                              VCC|    
 |6               |yellow  |SELECT   |                                8|    
 |7               |blue    |CLOCK    |                                9|    
 |8               |white   |UNKNOWN  |                                 |    
-|9               |green   |ACK    |                                   |    
+|9               |green   |ACK      |                                 |    
+
 
 Pull Up Resistor wiring diagram
 
@@ -48,6 +49,9 @@ Pull Up Resistor wiring diagram
                                     |
                                 DUALSHOCK 2 PIN 1 (BROWN)
 ```
+
+
+
 # Software
 
 
