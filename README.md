@@ -18,7 +18,7 @@ PS2 Dualshock 2 PAD to PC Joystick
 ## Wiring
 
 
-Female Socket (the opposite to DualShock 2 connector)
+Female Socket (the opposite to DualShock 2 connector) (looking from FRONT)
 ```
 \-------------------------/
  \ 1 2 3   4 5 6   7 8 9 /
@@ -37,6 +37,17 @@ Female Socket (the opposite to DualShock 2 connector)
 |8               |white   |UNKNOWN  |                                 |    
 |9               |green   |ACK    |                                   |    
 
+Pull Up Resistor wiring diagram
+
+```
+                                ARDUINO PIN 6
+                                    |
+                                    |
+ VCC -------------[ R 4.7KOhm ]-----+
+                                    |
+                                    |
+                                DUALSHOCK 2 PIN 1 (BROWN)
+```
 # Software
 
 
