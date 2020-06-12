@@ -12,7 +12,7 @@ After trying to connect my old [EMS PS2 to PC adapter](http://www.hkems.com/prod
     1. [Arduino Setup](#arduino-setup)
     2. [Testing](#testing)
 4. [Electronics](#electronics)
-    2. [Wiring](#wiring)
+    1. [Wiring](#wiring)
 5. [Box Enclosure](#box-enclosure)
 6. [X360 Controller](#x360-controller)
 
