@@ -193,6 +193,6 @@ void loop() {
     if(ps2x.ButtonPressed(PSB_PAD_LEFT)) Joystick.pressButton(JOY_PAD_LEFT);
     if(ps2x.ButtonReleased(PSB_PAD_LEFT)) Joystick.releaseButton(JOY_PAD_LEFT);
 
-    delay(5);
+    delay(20);
 
 }
