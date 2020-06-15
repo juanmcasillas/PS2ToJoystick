@@ -11,6 +11,7 @@ After trying to connect my old [EMS PS2 to PC adapter](http://www.hkems.com/prod
 3. [Software](#software)
     1. [Arduino Setup](#arduino-setup)
     2. [Testing](#testing)
+    3. [Multi](#multi)
 4. [Electronics](#electronics)
     1. [Wiring](#wiring)
 5. [Box Enclosure](#box-enclosure)
@@ -51,6 +52,8 @@ My work is based on [this article](https://www.instructables.com/id/PS2-Wire-Con
 4. Select the USB port
 5. Flash the `ps2joystick/ps2joystick.ino` sketch as usual.
 
+NOTE: See [Multi](#multi) for an alternate sketch that support Keyboard & Joystick Handling at the same time.
+
 ### Testing
 
 Just connect your Arduino Micro Clone in the PC with Windows 10, and open `Game Controllers`, you should have something like the following window:
@@ -88,6 +91,21 @@ Button Mapping (on X360ce, we have to add '1' to the ID, see below)
 |JOY_PAD_RIGHT   |15      |
 
 So you have a functional PS2 Dualshock 2 gaming pad working on your Windows 10, as a Joystick!. If you want to play modern games with the pad, you should read the section below [X360 Controller](#x360-controller)
+
+### Multi
+
+You can manage multiple HID devices from the same arduino Leonardo. Just load the required libraries, and work on. I need this support for mapping the [r6Pedals](https://github.com/juanmcasillas/r6pedals) project,
+so I use only one arduino to handle the joystick and the custom button keyboards. instead flashing `ps2joystick/ps2joystick.ino` sketch, flash `ps2multi/ps2multi.ino`. This sketch maps:
+
+|Arduino   PIN   |color   |key      |
+|----------------|--------|--------:|
+|4               |yellow  |e        |
+|5               |green   |q        |
+|gnd             |black   |         |
+|gnd             |black   |         |
+
+<img src="img/multi1.jpg"></img>
+<img src="img/multi2.jpg"></img>
 
 ## Electronics
 
