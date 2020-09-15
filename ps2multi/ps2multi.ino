@@ -48,7 +48,7 @@ int debounceCount[NBUTTONS];
 #endif 
 
 #ifndef RELEASE
-#define DEBUGLOG(...) DBG_OUTPUT_PORT.printf(__VA_ARGS__)
+#define DEBUGLOG(...) DBG_OUTPUT_PORT.print(__VA_ARGS__)
 #define SERIAL_SPEED 115200
 #else
 #define DEBUGLOG(...)
@@ -160,9 +160,9 @@ void setup(){
     Keyboard.begin();
     for (int i = 0; i < NBUTTONS; i++) {
         debouncers[i] = Bounce();
-        debounceCount[i] = 0;
-        pinMode(buttonPins[i],INPUT_PULLUP);
-        (debouncers[i]).attach(buttonPins[i]);
+        //debounceCount[i] = 0;
+        //pinMode(buttonPins[i],INPUT_PULLUP);
+        (debouncers[i]).attach(buttonPins[i],INPUT_PULLUP);
         (debouncers[i]).interval(BOUNCE_WAIT);
         delay(100);
         buttonPressed[i] = false;
@@ -171,76 +171,90 @@ void setup(){
 
 
 void loop() {
-    if(error == 1) //skip loop if no controller found
-    return; 
+    if(error == 0) {
+      // manage gamepad
+    
+      ps2x.read_gamepad(); 
+      
+      if(ps2x.ButtonPressed(PSB_CIRCLE)) Joystick.pressButton(JOY_CIRCLE);
+      if(ps2x.ButtonReleased(PSB_CIRCLE)) Joystick.releaseButton(JOY_CIRCLE);
   
-    ps2x.read_gamepad(); 
-    
-    if(ps2x.ButtonPressed(PSB_CIRCLE)) Joystick.pressButton(JOY_CIRCLE);
-    if(ps2x.ButtonReleased(PSB_CIRCLE)) Joystick.releaseButton(JOY_CIRCLE);
+      if(ps2x.ButtonPressed(PSB_CROSS)) Joystick.pressButton(JOY_CROSS);
+      if(ps2x.ButtonReleased(PSB_CROSS)) Joystick.releaseButton(JOY_CROSS);
+  
+      if(ps2x.ButtonPressed(PSB_SQUARE)) Joystick.pressButton(JOY_SQUARE);
+      if(ps2x.ButtonReleased(PSB_SQUARE)) Joystick.releaseButton(JOY_SQUARE);
+  
+      if(ps2x.ButtonPressed(PSB_TRIANGLE)) Joystick.pressButton(JOY_TRIANGLE);
+      if(ps2x.ButtonReleased(PSB_TRIANGLE)) Joystick.releaseButton(JOY_TRIANGLE);
+  
+      if(ps2x.ButtonPressed(PSB_L1)) Joystick.pressButton(JOY_L1);
+      if(ps2x.ButtonReleased(PSB_L1)) Joystick.releaseButton(JOY_L1);
+  
+      if(ps2x.ButtonPressed(PSB_L2)) Joystick.pressButton(JOY_L2);
+      if(ps2x.ButtonReleased(PSB_L2)) Joystick.releaseButton(JOY_L2);
+      
+      if(ps2x.ButtonPressed(PSB_L3)) Joystick.pressButton(JOY_L3);
+      if(ps2x.ButtonReleased(PSB_L3)) Joystick.releaseButton(JOY_L3);
+  
+  
+      if(ps2x.ButtonPressed(PSB_R1)) Joystick.pressButton(JOY_R1);
+      if(ps2x.ButtonReleased(PSB_R1)) Joystick.releaseButton(JOY_R1);
+  
+      if(ps2x.ButtonPressed(PSB_R2)) Joystick.pressButton(JOY_R2);
+      if(ps2x.ButtonReleased(PSB_R2)) Joystick.releaseButton(JOY_R2);
+      
+      if(ps2x.ButtonPressed(PSB_R3)) Joystick.pressButton(JOY_R3);
+      if(ps2x.ButtonReleased(PSB_R3)) Joystick.releaseButton(JOY_R3);
+  
+      if(ps2x.ButtonPressed(PSB_SELECT)) Joystick.pressButton(JOY_SELECT);
+      if(ps2x.ButtonReleased(PSB_SELECT)) Joystick.releaseButton(JOY_SELECT);
+  
+      if(ps2x.ButtonPressed(PSB_START)) Joystick.pressButton(JOY_START);
+      if(ps2x.ButtonReleased(PSB_START)) Joystick.releaseButton(JOY_START);
+  
+  
+      Joystick.setXAxis(ps2x.Analog(PSS_LX));
+      Joystick.setYAxis(ps2x.Analog(PSS_LY));
+      Joystick.setRxAxis(ps2x.Analog(PSS_RX));
+      Joystick.setRyAxis(ps2x.Analog(PSS_RY));
+  
+  
+      // Direction Pad
+      if(ps2x.ButtonPressed(PSB_PAD_UP)) Joystick.pressButton(JOY_PAD_UP);
+      if(ps2x.ButtonReleased(PSB_PAD_UP)) Joystick.releaseButton(JOY_PAD_UP);
+  
+      if(ps2x.ButtonPressed(PSB_PAD_DOWN)) Joystick.pressButton(JOY_PAD_DOWN);
+      if(ps2x.ButtonReleased(PSB_PAD_DOWN)) Joystick.releaseButton(JOY_PAD_DOWN);
+  
+      if(ps2x.ButtonPressed(PSB_PAD_RIGHT)) Joystick.pressButton(JOY_PAD_RIGHT);
+      if(ps2x.ButtonReleased(PSB_PAD_RIGHT)) Joystick.releaseButton(JOY_PAD_RIGHT);
+  
+      if(ps2x.ButtonPressed(PSB_PAD_LEFT)) Joystick.pressButton(JOY_PAD_LEFT);
+      if(ps2x.ButtonReleased(PSB_PAD_LEFT)) Joystick.releaseButton(JOY_PAD_LEFT);
 
-    if(ps2x.ButtonPressed(PSB_CROSS)) Joystick.pressButton(JOY_CROSS);
-    if(ps2x.ButtonReleased(PSB_CROSS)) Joystick.releaseButton(JOY_CROSS);
-
-    if(ps2x.ButtonPressed(PSB_SQUARE)) Joystick.pressButton(JOY_SQUARE);
-    if(ps2x.ButtonReleased(PSB_SQUARE)) Joystick.releaseButton(JOY_SQUARE);
-
-    if(ps2x.ButtonPressed(PSB_TRIANGLE)) Joystick.pressButton(JOY_TRIANGLE);
-    if(ps2x.ButtonReleased(PSB_TRIANGLE)) Joystick.releaseButton(JOY_TRIANGLE);
-
-    if(ps2x.ButtonPressed(PSB_L1)) Joystick.pressButton(JOY_L1);
-    if(ps2x.ButtonReleased(PSB_L1)) Joystick.releaseButton(JOY_L1);
-
-    if(ps2x.ButtonPressed(PSB_L2)) Joystick.pressButton(JOY_L2);
-    if(ps2x.ButtonReleased(PSB_L2)) Joystick.releaseButton(JOY_L2);
-    
-    if(ps2x.ButtonPressed(PSB_L3)) Joystick.pressButton(JOY_L3);
-    if(ps2x.ButtonReleased(PSB_L3)) Joystick.releaseButton(JOY_L3);
-
-
-    if(ps2x.ButtonPressed(PSB_R1)) Joystick.pressButton(JOY_R1);
-    if(ps2x.ButtonReleased(PSB_R1)) Joystick.releaseButton(JOY_R1);
-
-    if(ps2x.ButtonPressed(PSB_R2)) Joystick.pressButton(JOY_R2);
-    if(ps2x.ButtonReleased(PSB_R2)) Joystick.releaseButton(JOY_R2);
-    
-    if(ps2x.ButtonPressed(PSB_R3)) Joystick.pressButton(JOY_R3);
-    if(ps2x.ButtonReleased(PSB_R3)) Joystick.releaseButton(JOY_R3);
-
-    if(ps2x.ButtonPressed(PSB_SELECT)) Joystick.pressButton(JOY_SELECT);
-    if(ps2x.ButtonReleased(PSB_SELECT)) Joystick.releaseButton(JOY_SELECT);
-
-    if(ps2x.ButtonPressed(PSB_START)) Joystick.pressButton(JOY_START);
-    if(ps2x.ButtonReleased(PSB_START)) Joystick.releaseButton(JOY_START);
-
-
-    Joystick.setXAxis(ps2x.Analog(PSS_LX));
-    Joystick.setYAxis(ps2x.Analog(PSS_LY));
-    Joystick.setRxAxis(ps2x.Analog(PSS_RX));
-    Joystick.setRyAxis(ps2x.Analog(PSS_RY));
-
-
-    // Direction Pad
-    if(ps2x.ButtonPressed(PSB_PAD_UP)) Joystick.pressButton(JOY_PAD_UP);
-    if(ps2x.ButtonReleased(PSB_PAD_UP)) Joystick.releaseButton(JOY_PAD_UP);
-
-    if(ps2x.ButtonPressed(PSB_PAD_DOWN)) Joystick.pressButton(JOY_PAD_DOWN);
-    if(ps2x.ButtonReleased(PSB_PAD_DOWN)) Joystick.releaseButton(JOY_PAD_DOWN);
-
-    if(ps2x.ButtonPressed(PSB_PAD_RIGHT)) Joystick.pressButton(JOY_PAD_RIGHT);
-    if(ps2x.ButtonReleased(PSB_PAD_RIGHT)) Joystick.releaseButton(JOY_PAD_RIGHT);
-
-    if(ps2x.ButtonPressed(PSB_PAD_LEFT)) Joystick.pressButton(JOY_PAD_LEFT);
-    if(ps2x.ButtonReleased(PSB_PAD_LEFT)) Joystick.releaseButton(JOY_PAD_LEFT);
-
+    }
 
     // read and debounce buttons (for keyboard mapping)
 
     for (int j = 0; j < NBUTTONS; j++) { // iterate over each button (pin)
         
         (debouncers[j]).update();         //check current value
-        int value = (debouncers[j]).read();
-        
+        /*
+        int value = debouncers[j].read();
+      
+         if ( value == LOW ) {
+            Keyboard.press(char(buttonPresets[j])); //Keyboard.write('1');
+            buttonPressed[j] = true;
+         } else {
+            Keyboard.release(char(buttonPresets[j])); // if 0 then release button
+            buttonPressed[j] = false;
+         }
+         */
+
+ 
+         int value = (debouncers[j]).read();
+         
         if ( value == LOW ) { // if button pressed
         
         // The button has been held down long enough and it hasn't been previously registered as pressed
@@ -262,6 +276,7 @@ void loop() {
             buttonPressed[j] = false;
             }
         }
+      
     }
 
     delay(DELAY_TIME);
